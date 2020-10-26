@@ -1,0 +1,127 @@
+Acc Database:
+User: vuotcanblog
+Pass: Trungkienkahp_1908
+
+Acc 000webhost
+user: vuotcanblog
+Pass: Trungkienkahp1908
+
+
+LẬP TRÌNH‎ > ‎PHP - Laravel‎ > ‎
+Upload Laravel Project lên 000webhost
+1. Upload file
+
+- Nén file => upload bằng trình duyệt hoặc phần mềm FileZilla
+
+- Giải nén: trực tiếp bằng trình duyệt hoặc bằng cách sau:
+
++ Up file unzip.php. Link tải: http://www.mediafire.com/file/og9npii7bukau31/unzip.zip/file
+
++ Giải nén file: vào trang 000webhost cá nhân chọn file unzipper.php => chọn file zip đã up lên => chọn giải nén
+
+- upload file .evn
+
+2. Di chuyển thư mục + file:
+
+- Di chuyển toàn bộ thư mục + file trong public_html ra ngoài
+
+- Xóa thư mục public_html
+
+- Đổi tên thư mục public thành public_html
+
+3. Chỉnh sửa file AppServiceProvider.php
+
+- Vào thư mục: \app\Providers chọn file AppServiceProvider.php => chỉnh sửa:
+
+public function register()
+    {
+        $this->app->bind('path.public', function() {
+            return base_path().DIRECTORY_SEPARATOR.'public_html';
+        });
+    }
+4. Chỉnh sửa file evn
+
+DB_HOST=localhost
+
+DB_PORT=3306
+
+DB_DATABASE=id5662554_laravel_todos
+
+DB_USERNAME=id5662554_tranquangtan
+
+DB_PASSWORD=123456
+
+
+
+- Copy key ở APPKEY:
+
+Ví dụ:
+
+APP_KEY=base64:qC2GEgeD/PiZ5WL8SsaTZ7cSaYiPGEVATf/CcWYFUlM=
+
+được chuỗi qC2GEgeD/PiZ5WL8SsaTZ7cSaYiPGEVATf/CcWYFUlM=
+
+
+
+- Vào \config\app.php chỉnh sửa:
+
+'key' => env('APP_KEY'), thành
+
+'key' => env('APP_KEY',base64_decode('chuỗi nhận được khi copy ở trên')),
+
+ví dụ: 'key' => env('APP_KEY', base64_decode('qC2GEgeD/PiZ5WL8SsaTZ7cSaYiPGEVATf/CcWYFUlM=')),
+
+
+
+
+
+'debug' => env('APP_DEBUG', false), thành 'debug' => env('APP_DEBUG', true),
+
+
+
+'timezone' => 'Asia/Ho_Chi_Minh',
+
+
+
+5. Chỉnh sửa file \config\database.php
+
+Thêm dòng 'options' => [PDO::ATTR_EMULATE_PREPARES => true], vào ‘mysql’
+
+'mysql' => [
+
+'driver' => 'mysql',
+
+'host' => env('DB_HOST', 'localhost'),
+
+'port' => env('DB_PORT', '3306'),
+
+'database' => env('DB_DATABASE', 'Tên_database'),
+
+'username' => env('DB_USERNAME', 'Tên_user'),
+
+'password' => env('DB_PASSWORD', 'your_password'),
+
+'unix_socket' => env('DB_SOCKET', ''),
+
+'charset' => 'utf8mb4',
+
+'collation' => 'utf8mb4_unicode_ci',
+
+'options' => [PDO::ATTR_EMULATE_PREPARES => true],
+
+'prefix' => '',
+
+'strict' => true,
+
+'engine' => null,
+
+],
+
+
+
+6. Xóa file .gitignore trong thư mục /bootstrap/cache/
+
+
+
+
+
