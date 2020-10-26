@@ -1,8 +1,6 @@
-## Build Blog CMS (Content Management System) with Laravel 7
+## VC BLOG CMS x LARAVEL 7
+## STEP CONFIG PROJECT
 
-## Clone this repo
-```
-```
 
 ## Install composer packages
 ```
